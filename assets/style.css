@@ -1,1 +1,35 @@
-add css style
+.wrapper {
+    width: 400px;
+
+}
+
+.container {
+    background-color: red;
+    padding: 50px 40px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.container p {
+    color: #fdd8d8;
+    line-height: 2;
+    font-size: 18px;
+}
+
+.container h3 {
+    color: #ffffff;
+    margin: 20px 0 60px 0;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.container button {
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    cursor: pointer;
+}
