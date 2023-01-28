@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
@@ -8,13 +9,16 @@ body {
 }
 
 
+
+
 /* Justin CSS */
+
 .navbar-item {
-    background-color: rgb(47, 196, 255);
+    background-color: #f5f5f5;
     font-size: 15px;
 }
 
-.ttitle {
+.title {
     display: flex;
     margin-top: 70px;
     justify-content: center;
@@ -33,35 +37,112 @@ body {
 
 /* Ends */
 
+/* ---------Homepag------- */
+
+header h1 {
+    margin: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    border: 3px solid black;
+}
+
+/* Container holding the image and the text */
+.container1 {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 30px;
+    background-color: #3dc9c2;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    background-color: #3dc9c2;
+
+}
+
+#assessment_button {
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #3dc9c2;
+    padding: 5px;
+    color: white;
+}
+
+/* .homepage {
+    margin: 20px;
+    display: flex;
+} */
+
+.hero {
+    height: 800px;
+    width: 100%;
+    margin-bottom: 25px;
+    background-image: url("./Images/hero_image.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+
 
 /* -----------CSS for Inspirational Quote--------- */
 
 .wrapper {
-    width: 400px;
+
+    width: 100%;
+
+
 
 }
 
-.container {
+.container2 {
     background-color: red;
     padding: 50px 40px;
     border-radius: 8px;
     text-align: center;
 }
 
-.container p {
+.container2 p {
     color: #fdd8d8;
     line-height: 2;
     font-size: 18px;
 }
 
-.container h3 {
+.container2 h3 {
     color: #ffffff;
     margin: 20px 0 60px 0;
     font-weight: 600;
     text-transform: capitalize;
 }
 
-.container button {
+.container2 button {
     background-color: #ffffff;
     border: none;
     padding: 15px 45px;
