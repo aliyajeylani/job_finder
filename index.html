@@ -12,61 +12,115 @@
 
 
 
+
 <body>
     <!-- This is the nav -->
-    <nav class="navbar is-link">
-        <div class="navbar-brand is-boxed navbar-end"></div>
-            <a class="navbar-item">Home</a>
-            <a class="navbar-item">Assessment</a>
-            <a class="navbar-item">Jobs</a>
-            <a class="navbar-item">My Top Role</a>
-            <a class="navbar-item">About Us</a>
-            <a class="navbar-item"></a>
-        </nav>
-          <body>
-            <h1 class="ttitle">TESTIMONY</h1>
-            <div class="columns">
-                <div class="column">First Card
-                  <p class="cardtext">This person thinks that we are so amazing!!</p>
-                </div>
-                <div class="column ">Second Card
-                  <p class="cardtext">This person thinks that we are so amazing!!</p>
-                </div>
-                <div class="column">Third Card
-                  <p class="cardtext">This person thinks that we are so amazing!!</p>
-                </div>
-              
-            </div>
-<!-- This is the end  -->
-
-    <!-- Inspirational Quotes -->
-    <section>
-        <div class="wrapper">
-            <div class="container">
-                <p id="quote">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam delectus pariatur est adipisci
-                    quo quaerat veritatis quae. Expedita in, ut molestiae fugiat eos sint id? Placeat, illo? Maxime,
-                    pariatur explicabo?
-                </p>
-                <h3 id="author">lorem2, ipsum</h3>
-                <button id="quote_btn">Get Quote</button>
-            </div>
-
+    <nav class="navbar is-light">
+        <div class="navbar-brand navbar-start">
+            <img src="./assets/Images/iTakeoff2.png" width="150" height="150" />
         </div>
+        <a class="navbar-item" id="home">Home</a>
+        <a class="navbar-item" id="assessment">Assessment</a>
+        <a class="navbar-item" id="jobs">Jobs</a>
+        <a class="navbar-item" id="top_role">My Top Role</a>
+        <a class="navbar-item" id="about_us">About Us</a>
 
+    </nav>
+
+
+    <!-- Start of Assessment Page -->
+
+    <header>
+        <h1>Launch Into a World Full of Opportunties!</h1>
+    </header>
+
+    <section class="container1">
+        <div class="hero"></div>
+        <p class="top-left"> Empowering professionals to discover career opportunities in the technology sector!</p>
+        <p class="centered">Discover which tech career is right for you by clicking the 'Begin Assessment' button below.
+        </p>
+        <div>
+            <button class="bottom-right" id="assessment_button">Begin Assessment</button>
+        </div>
 
     </section>
 
 
 
 
+    <div class="assessment_page" style="display:none">
+
+    </div>
+
+    <!-- <----Adding modal here----->
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+            <div class="box">
+                <p>Assessment Completed!</p>
+                Thank you for completing the assessment. Click the 'X' to close this window and view your result.
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <button class="js-modal-trigger" data-target="modal-js-example" style="display:none">
+        Submit Assessment
+    </button>
+
+    <!-- End of Modal -->
+
+    <!-- Inspirational Quotes -->
+    <section>
+        <div class="wrapper">
+            <div class="container2">
+                <p id="quote">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam delectus pariatur est
+                    adipisci
+                    quo quaerat veritatis quae. Expedita in, ut molestiae fugiat eos sint id? Placeat, illo? Maxime,
+                    pariatur explicabo?
+                </p>
+                <h3 id="author">lorem2, ipsum</h3>
+                <button id="quote_btn">Get Quote</button>
+            </div>
+        </div>
+    </section>
+    <!-- End of Inspiration Quotes -->
 
 
+    <!-- Start Testimony -->
+    <section class="testimony_section">
+        <h1 class="title">TESTIMONY</h1>
+        <div class="columns">
+            <div class="column">First Card
+                <p class="cardtext">This person thinks that we are so amazing!!</p>
+            </div>
+            <div class="column ">Second Card
+                <p class="cardtext">This person thinks that we are so amazing!!</p>
+            </div>
+            <div class="column">Third Card
+                <p class="cardtext">This person thinks that we are so amazing!!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- This is the end of Testimony  -->
 
 
     <script src="./assets/script.js"></script>
 
 </body>
 
+<!-- this is the footer -->
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            @2023 ITakeOff. All rights reserved`
+        </p>
+    </div>
+</footer>
 
 </html>
