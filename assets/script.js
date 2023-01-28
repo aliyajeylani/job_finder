@@ -160,8 +160,6 @@ function getAssessmentPAge() {
     // assessmentPage.appendChild(likeBtn);
     // assessmentPage.appendChild(dislikeBtn);
 
-
-
 }
 
 
@@ -251,3 +249,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// ----------Justin JavaScript-------------------------
+let home_btn = document.querySelector("#home")
+let assess_btn = document.querySelector("#assessment")
+let jobs_btn = document.querySelector("#jobs")
+let top_role_btn = document.querySelector("#top_role")
+let team_btn = document.querySelector("#about_us")
+home_btn.addEventListener("click", gohome)
+assess_btn.addEventListener("click", assessnow)
+jobs_btn.addEventListener("click", jobspage)
+team_btn.addEventListener("click", goteam)
+
+
+
+if (skills[1]) {
+    console.log("you are a software dev")
+}
+if (skills[2]) {
+    console.log("you are a business analyst")
+}
+if (skills[11]) {
+    console.log("you are a scrum master")
+}
+if (skills[5]) {
+    console.log("you are a quality assurance")
+}
+if (skills[12]) {
+    console.log("you are a software dev")
+}
