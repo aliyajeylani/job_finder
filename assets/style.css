@@ -1,3 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #F4F4F6;
+}
+
+
+
+
+
+
+/* -----------CSS for Inspirational Quote--------- */
+
 .wrapper {
     width: 400px;
 
@@ -32,4 +48,34 @@
     font-weight: 600;
     color: red;
     cursor: pointer;
+}
+
+/* -----------End CSS for Inspirational Quote--------- */
+
+
+/* -----------CSS for Assessment Page--------- */
+.like_btn {
+    font-size: 25px;
+    background-color: green;
+    color: white;
+    margin: 20px;
+    padding: 5px;
+    width: 80px;
+    text-align: center;
+
+}
+
+.dislike_btn {
+    font-size: 25px;
+    background-color: red;
+    color: white;
+    margin: 20px;
+    padding: 5px;
+    width: 90px;
+    text-align: center;
+}
+
+.skillDescr {
+    font-size: 20px;
+    margin: 10px;
 }
