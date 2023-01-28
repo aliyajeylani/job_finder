@@ -1,4 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 
+body {
+    background-color: #F4F4F6;
+}
+
+
+/* Justin CSS */
+.navbar-item {
+    background-color: rgb(47, 196, 255);
+    font-size: 15px;
+}
+
+.ttitle {
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    padding: 5px;
+}
+
+.column {
+    margin: 15px;
+    background-color: blanchedalmond;
+}
+
+.cardtext {
+    margin: 5px;
+    color: lightcoral;
+}
+
+/* Ends */
+
+
+/* -----------CSS for Inspirational Quote--------- */
 
 .wrapper {
     width: 400px;
@@ -65,3 +101,5 @@
     font-size: 20px;
     margin: 10px;
 }
+
+/* -----end of css for assessment page------- */

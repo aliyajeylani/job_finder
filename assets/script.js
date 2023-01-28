@@ -245,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 // -------------End of Modal Script----------------------
 
 
