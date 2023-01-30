@@ -27,6 +27,7 @@ window.addEventListener("load", getQuote);
 quote_btn.addEventListener("click", getQuote);
 
 
+
 // ------------------------Assessment Page------------------
 
 // Must append function to homepage
