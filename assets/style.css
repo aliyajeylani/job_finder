@@ -5,9 +5,8 @@
 }
 
 body {
-    background-color: #F4F4F6;
+    background-color: #EFEBE7;
 }
-
 
 
 
@@ -37,16 +36,7 @@ body {
 
 /* Ends */
 
-/* ---------Homepag------- */
-
-header h1 {
-    margin: 20px;
-    font-size: 60px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    border: 3px solid black;
-}
+/* --------------------CSS for Homepage--------------- */
 
 /* Container holding the image and the text */
 .container1 {
@@ -55,6 +45,21 @@ header h1 {
     color: white;
 }
 
+.slogan {
+    margin: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+
+.mission {
+    font-size: 25px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
 /* Bottom right text */
 .bottom-right {
@@ -64,14 +69,6 @@ header h1 {
 }
 
 
-/* Top left text */
-.top-left {
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    font-size: 30px;
-    background-color: #3dc9c2;
-}
 
 /* Centered text */
 .centered {
@@ -85,18 +82,16 @@ header h1 {
 }
 
 #assessment_button {
-    font-size: 30px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: #3dc9c2;
-    padding: 5px;
-    color: white;
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    cursor: pointer;
 }
 
-/* .homepage {
-    margin: 20px;
-    display: flex;
-} */
 
 .hero {
     height: 800px;
@@ -106,6 +101,8 @@ header h1 {
     background-size: cover;
     background-position: center;
 }
+
+/* --------------------End of CSS for Homepage--------------- */
 
 
 
@@ -117,13 +114,10 @@ header h1 {
 .wrapper {
 
     width: 100%;
-
-
-
 }
 
 .container2 {
-    background-color: red;
+    background-color: #3dc9c2;
     padding: 50px 40px;
     border-radius: 8px;
     text-align: center;
@@ -183,4 +177,41 @@ header h1 {
     margin: 10px;
 }
 
+.assessment_page {
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.js-modal-trigger {
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 45px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    cursor: pointer;
+    margin: 20px;
+
+}
+
 /* -----end of css for assessment page------- */
+
+
+/* -----Start of css for result page------- */
+
+.result_text {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.result_descr {
+    font-size: 25px;
+    text-align: center;
+}
+
+.videos {
+    text-align: center;
+}
