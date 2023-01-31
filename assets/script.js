@@ -20,12 +20,16 @@ function getQuote() {
             quote.innerText = data.content;
             author.innerText = data.author;
 
+        })
+        .catch(function (error) {
+
         });
+
 };
 
 window.addEventListener("load", getQuote);
 quote_btn.addEventListener("click", getQuote);
-
+getQuote();
 
 // ------------------------Assessment Page------------------
 
@@ -356,23 +360,27 @@ function getResultPage() {
 
 // // ------This is my  second API--------
 
-// url = "https://findwork.dev/api/jobs/"
-// //  {
-// //   "count": 4385,
-// //   "next": "https://findwork.dev/api/jobs/?page=2",
-// //   "previous": null,
-// //   "results": [...]
-// // }
-// // function getJobs() {
-// fetch(url, {
-//     "Authorization: Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa"
-// })
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
-// // };
+const url = "https://remove-cors.vercel.app/https://findwork.dev/api/jobs/"
+const options = {
+    method: 'GET',
+    headers: {
+        cookie: 'csrftoken=tTySm9dqENWdWkOD3pHMrHH8p6DQ3h8E1i4dux62lxavkC4mGh3mfefihNhiwFg3',
+        Authorization: 'Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa'
+    }
+};
+// function getJobs() {
+fetch(url, options)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
+    .catch(function (error) {
+
+        console.log(error);
+    });
+
+// };
 
 // // 46d28295faa5e870b262de405cf67a9ebbc5aaaa
