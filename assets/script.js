@@ -4,7 +4,7 @@
 
 var quote = document.getElementById("quote");
 var author = document.getElementById("author");
-var quote_btn = document.getElementById("quote_btn")
+var quote_btn = document.getElementById("quote_btn");
 
 
 var requestUrl = "https://api.quotable.io/random"
@@ -20,20 +20,24 @@ function getQuote() {
             quote.innerText = data.content;
             author.innerText = data.author;
 
+        })
+        .catch(function (error) {
+
         });
+
 };
 
 window.addEventListener("load", getQuote);
 quote_btn.addEventListener("click", getQuote);
-
+getQuote();
 
 // ------------------------Assessment Page------------------
 
-// Must append function to homepage
+var homepage = document.querySelector(".container1");
+var testimonies = document.querySelector(".testimony_section");
 var assessment_btn = document.getElementById("assessment_button");
 var title = document.createElement("h1");
 var instruction = document.createElement("p");
-// var homepage = document.querySelector(".homepage");
 var assessmentPage = document.querySelector(".assessment_page");
 var likeBtn = document.createElement("button");
 var dislikeBtn = document.createElement("button");
@@ -137,10 +141,12 @@ assessment_btn.addEventListener("click", getAssessmentPAge);
 
 function getAssessmentPAge() {
 
+    homepage.style.display = "none";
+    testimonies.style.display = "none";
     assessment_btn.style.display = "none";
     assessmentPage.style.display = "block";
     title.textContent = "Let's get you started!";
-    instruction.textContent = "If you like doing the activity, click the like button. If you do not like doing the activity, click dislike button. You must choose a like a like or dislike for each activity";
+    instruction.textContent = "If you like doing the activity, click the like button. If you do not like doing the activity, click the dislike button. You must choose a like or dislike for each activity. Click the 'Submit Assessment' button once you have reviewed all of the activities.";
     likeBtn.innerHTML = "Like";
     likeBtn.setAttribute("class", "like_btn");
     dislikeBtn.setAttribute("class", "dislike_btn");
@@ -157,8 +163,7 @@ function getAssessmentPAge() {
     assessmentPage.appendChild(dislikeBtn);
     assessmentPage.appendChild(skillDescription);
     assessmentPage.appendChild(skillImage);
-    // assessmentPage.appendChild(likeBtn);
-    // assessmentPage.appendChild(dislikeBtn);
+
 
 }
 
@@ -177,22 +182,21 @@ function nextSkill() {
     assessmentPage.appendChild(skillDescription);
     assessmentPage.appendChild(skillImage);
 
-
-    var submitBtn = document.querySelector(".js-modal-trigger");
-
-
-    if (currentSkill === 16) {
+    if (currentSkill == 16) {
 
         ///show submit button
         submitBtn.style.display = "block";
-
-
+        // likeBtn.style.display = "none";
+        // dislikeBtn.style.display = "none";
         console.log("assessment completed");
-        // Send to result page - Justin to work on
 
     }
 
 }
+
+var submitBtn = document.querySelector(".js-modal-trigger");
+submitBtn.addEventListener("click", getResultPage);
+
 
 // ---------Script for Modal---------------------
 
@@ -255,25 +259,128 @@ let assess_btn = document.querySelector("#assessment")
 let jobs_btn = document.querySelector("#jobs")
 let top_role_btn = document.querySelector("#top_role")
 let team_btn = document.querySelector("#about_us")
-home_btn.addEventListener("click", gohome)
-assess_btn.addEventListener("click", assessnow)
-jobs_btn.addEventListener("click", jobspage)
-team_btn.addEventListener("click", goteam)
+let resultPage = document.querySelector(".result_page");
+
+assess_btn.addEventListener("click", getAssessmentPAge);
+
+
+// jobs_btn.addEventListener("click", getResultPage);
+
+// team_btn.addEventListener("click", goteam)
+
+var result;
+
+function getResultPage() {
+
+    submitBtn.style.display = "none";
+    assessmentPage.style.display = "none";
+    resultPage.style.display = "block";
+    result = document.createElement("h1");
+    result.setAttribute("class", "result_text");
+    resultDescr = document.createElement("h2");
+    resultDescr.setAttribute("class", "result_descr");
+    developerVideo = document.querySelector(".software_developer");
+    developerVideo.setAttribute("class", "videos");
+    analystVideo = document.querySelector(".business_analyst");
+    analystVideo.setAttribute("class", "videos");
+    scrumMasterVideo = document.querySelector(".scrum_master");
+    scrumMasterVideo.setAttribute("class", "videos");
+    qualityAssuranceVideo = document.querySelector(".quality_assurance");
+    qualityAssuranceVideo.setAttribute("class", "videos");
+    productOwnerVideo = document.querySelector(".product_owner");
+    productOwnerVideo.setAttribute("class", "videos");
+    projectManagerVideo = document.querySelector(".project_manager");
+    projectManagerVideo.setAttribute("class", "videos");
 
 
 
-if (skills[1]) {
-    console.log("you are a software dev")
-}
-if (skills[2]) {
-    console.log("you are a business analyst")
-}
-if (skills[11]) {
-    console.log("you are a scrum master")
-}
-if (skills[5]) {
-    console.log("you are a quality assurance")
-}
-if (skills[12]) {
-    console.log("you are a software dev")
-}
+
+
+    if (skills[1]) {
+        console.log("You are a Software Developer!");
+
+        result.textContent = "You are a Software Developer!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        developerVideo.style.display = "block";
+
+
+    } if (skills[2]) {
+        console.log("You are a Business Analyst!");
+
+        result.textContent = "You are a Business Analyst!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        analystVideo.style.display = "block";
+
+    } if (skills[11]) {
+        console.log("You are a Scrum Master!");
+
+        result.textContent = "You are a Scrum Master!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        scrumMasterVideo.style.display = "block";
+
+
+    } if (skills[5]) {
+        console.log("You are a Quality Assurance Tester!");
+
+        result.textContent = "You are a Quality Assurance Tester!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        qualityAssuranceVideo.style.display = "block";
+
+    } if (skills[13]) {
+        console.log("You are a Product Owner!");
+
+        result.textContent = "You are a Product Owner!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        productOwnerVideo.style.display = "block";
+
+    } if (skills[12]) {
+        console.log("You are a Project Manager!")
+
+        result.textContent = "You are a Project Manager!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        projectManagerVideo.style.display = "block";
+
+    } else {
+        console.log("You are a Business Analyst!");
+    }
+};
+
+
+// // ------This is my  second API--------
+
+const url = "https://remove-cors.vercel.app/https://findwork.dev/api/jobs/"
+const options = {
+    method: 'GET',
+    headers: {
+        cookie: 'csrftoken=tTySm9dqENWdWkOD3pHMrHH8p6DQ3h8E1i4dux62lxavkC4mGh3mfefihNhiwFg3',
+        Authorization: 'Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa'
+    }
+};
+// function getJobs() {
+fetch(url, options)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
+    .catch(function (error) {
+
+        console.log(error);
+    });
+
+// };
+
+// // 46d28295faa5e870b262de405cf67a9ebbc5aaaa
