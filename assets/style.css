@@ -215,3 +215,15 @@ body {
 .videos {
     text-align: center;
 }
+
+.about_us h2 {
+    margin: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.about_us img {
+    margin: 20px;
+
+}
