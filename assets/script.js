@@ -37,6 +37,7 @@ var homepage = document.querySelector(".container1");
 var quoteSection = document.querySelector(".wrapper");
 var testimonies = document.querySelector(".testimony_section");
 var aboutUs = document.querySelector(".about_us");
+var stockInformation = document.querySelector(".container3");
 var assessment_btn = document.getElementById("assessment_button");
 var title = document.createElement("h1");
 var instruction = document.createElement("p");
@@ -366,6 +367,7 @@ function getAboutUsPage() {
     homepage.style.display = "none";
     testimonies.style.display = "none";
     quoteSection.style.display = "none";
+    stockInformation.style.display = "none";
 
 };
 
@@ -376,6 +378,7 @@ function getResultPage() {
     submitBtn.style.display = "none";
     assessmentPage.style.display = "none";
     homepage.style.display = "none";
+    stockInformation.style.display = "none";
     resultPage.style.display = "block";
     result = document.createElement("h1");
     result.setAttribute("class", "result_text");
@@ -466,30 +469,68 @@ function getResultPage() {
 
 // // ------This is my  second API--------
 
-// const url = "https://remove-cors.vercel.app/https://findwork.dev/api/jobs/"
-// const options = {
-//     method: 'GET',
-//     headers: {
-//         cookie: 'csrftoken=tTySm9dqENWdWkOD3pHMrHH8p6DQ3h8E1i4dux62lxavkC4mGh3mfefihNhiwFg3',
-//         Authorization: 'Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa'
-//     }
-// };
-// // function getJobs() {
-// fetch(url, options)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     })
-//     .catch(function (error) {
+var appleSymbol = document.getElementById("apple_symbol");
+var appleDate = document.getElementById("apple_date_time");
+var appleHigh = document.getElementById("apple_high");
+var appleLow = document.getElementById("apple_low");
+var googleSymbol = document.getElementById("google_symbol");
+var googleDate = document.getElementById("google_date_time");
+var googleHigh = document.getElementById("google_high");
+var googleLow = document.getElementById("google_low");
+var microsoftSymbol = document.getElementById("microsoft_symbol");
+var microsoftDate = document.getElementById("microsoft_date_time");
+var microsoftHigh = document.getElementById("microsoft_high");
+var microsoftLow = document.getElementById("microsoft_low");
+var teslaSymbol = document.getElementById("tesla_symbol");
+var teslaDate = document.getElementById("tesla_date_time");
+var teslaHigh = document.getElementById("tesla_high");
+var teslaLow = document.getElementById("tesla_low");
 
-//         console.log(error);
-//     });
 
-// // };
+const url = "https://api.twelvedata.com/time_series?symbol=AAPL,GOOGL,MSFT,TSLA&interval=1min&apikey=e52ce19b5d0740fa91668158532f6a8e"
 
-// // // 46d28295faa5e870b262de405cf67a9ebbc5aaaa
+function getStockInfo() {
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+
+            appleSymbol.textContent = data.AAPL.meta.symbol;
+            appleDate.textContent = "Date: " + data.AAPL.values[0].datetime;
+            appleHigh.textContent = "High: " + data.AAPL.values[0].high;
+            appleLow.textContent = "Low: " + data.AAPL.values[0].low;
+
+
+            googleSymbol.textContent = data.GOOGL.meta.symbol;
+            googleDate.textContent = "Date: " + data.GOOGL.values[0].datetime;
+            googleHigh.textContent = "High: " + data.GOOGL.values[0].high;
+            googleLow.textContent = "Low: " + data.GOOGL.values[0].low;
+
+            microsoftSymbol.textContent = data.MSFT.meta.symbol;
+            microsoftDate.textContent = "Date: " + data.MSFT.values[0].datetime;
+            microsoftHigh.textContent = "High: " + data.MSFT.values[0].high;
+            microsoftLow.textContent = "Low: " + data.MSFT.values[0].low;
+
+
+            teslaSymbol.textContent = data.TSLA.meta.symbol;
+            teslaDate.textContent = "Date: " + data.TSLA.values[0].datetime;
+            teslaHigh.textContent = "High: " + data.TSLA.values[0].high;
+            teslaLow.textContent = "Low: " + data.TSLA.values[0].low;
+
+
+
+        })
+        .catch(function (error) {
+
+            console.log(error);
+
+        });
+
+};
+
+window.addEventListener("load", getStockInfo);
 
 
 
