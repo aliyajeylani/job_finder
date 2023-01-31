@@ -34,7 +34,9 @@ getQuote();
 // ------------------------Assessment Page------------------
 
 var homepage = document.querySelector(".container1");
+var quoteSection = document.querySelector(".wrapper");
 var testimonies = document.querySelector(".testimony_section");
+var aboutUs = document.querySelector(".about_us");
 var assessment_btn = document.getElementById("assessment_button");
 var title = document.createElement("h1");
 var instruction = document.createElement("p");
@@ -270,6 +272,8 @@ function nextSkill() {
         submitBtn.style.display = "block";
         likeBtn.style.display = "none";
         dislikeBtn.style.display = "none";
+        skillDescription.style.display = "none";
+        skillImage.style.display = "none";
         console.log("assessment completed");
 
     } else {
@@ -355,7 +359,15 @@ assess_btn.addEventListener("click", getAssessmentPAge);
 top_role_btn.addEventListener("click", getResultPage);
 
 
-// team_btn.addEventListener("click", goteam)
+team_btn.addEventListener("click", getAboutUsPage)
+
+function getAboutUsPage() {
+    aboutUs.style.display = "block";
+    homepage.style.display = "none";
+    testimonies.style.display = "none";
+    quoteSection.style.display = "none";
+
+};
 
 
 
@@ -363,13 +375,13 @@ function getResultPage() {
 
     submitBtn.style.display = "none";
     assessmentPage.style.display = "none";
+    homepage.style.display = "none";
     resultPage.style.display = "block";
     result = document.createElement("h1");
     result.setAttribute("class", "result_text");
     resultDescr = document.createElement("h2");
     resultDescr.setAttribute("class", "result_descr");
     developerVideo = document.querySelector("#software_developer");
-    console.log(developerVideo);
     developerVideo.setAttribute("class", "videos");
     analystVideo = document.querySelector("#business_analyst");
     analystVideo.setAttribute("class", "videos");
