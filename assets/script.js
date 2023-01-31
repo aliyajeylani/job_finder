@@ -43,31 +43,55 @@ var likeBtn = document.createElement("button");
 var dislikeBtn = document.createElement("button");
 var skillDescription = document.createElement("h2");
 var skillImage = document.createElement("img");
+const SOFTWARE_DEVELOPER = 0;
+const BUSINESS_ANALYST = 1;
+const SCRUM_MASTER = 2;
+const QUALITY_ASSURANCE = 3;
+const PRODUCT_OWNER = 4;
+const PROJECT_MANAGER = 5;
+let indexOfLargest = localStorage.getItem("index_of_role");
+
+var roleTotal = [0, 0, 0, 0, 0, 0];
 var currentSkill = 0;
 var skills = [
     {
         skill: "Problem-solving",
         image: "./assets/Images/problem_solving.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER, QUALITY_ASSURANCE, PRODUCT_OWNER
+        ]
     },
     {
         skill: "Programming",
         image: "./assets/Images/programming.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER
+        ]
 
     },
     {
         skill: "Analytical",
         image: "./assets/Images/analytical.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER, BUSINESS_ANALYST, PRODUCT_OWNER
+        ]
 
     },
     {
         skill: "Research",
         image: "./assets/Images/research.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER, QUALITY_ASSURANCE
+        ]
 
     },
     {
 
         skill: "Decision-making",
         image: "./assets/Images/decision_making.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER, PRODUCT_OWNER
+        ]
 
 
     },
@@ -75,61 +99,97 @@ var skills = [
 
         skill: "Attention to detail",
         image: "./assets/Images/attention_to_detail.jpg",
+        roles: [
+            SOFTWARE_DEVELOPER, QUALITY_ASSURANCE
+        ]
 
     },
     {
         skill: "Critical Thinking",
         image: "./assets/Images/critical_thinking.jpg",
+        roles: [
+            BUSINESS_ANALYST
+        ]
 
     },
     {
         skill: "Communication",
         image: "./assets/Images/communication.jpg",
+        roles: [
+            BUSINESS_ANALYST, PRODUCT_OWNER
+        ]
 
     },
     {
         skill: "Collaboration",
         image: "./assets/Images/collaboration.jpg",
+        roles: [
+            BUSINESS_ANALYST, SCRUM_MASTER, PRODUCT_OWNER, QUALITY_ASSURANCE, PROJECT_MANAGER
+        ]
 
     },
     {
         skill: "Multitasking",
         image: "./assets/Images/multi_tasking.jpg",
+        roles: [
+            BUSINESS_ANALYST, SCRUM_MASTER, PROJECT_MANAGER
+        ]
 
     },
     {
         skill: "Time Management",
         image: "./assets/Images/time_management.jpg",
+        roles: [
+            SCRUM_MASTER
+        ]
 
     },
     {
         skill: "Planning",
         image: "./assets/Images/planning.png",
+        roles: [
+            SCRUM_MASTER, PROJECT_MANAGER
+        ]
 
     },
     {
         skill: "Project Management",
         image: "./assets/Images/project_management.jpg",
+        roles: [
+            PROJECT_MANAGER, SCRUM_MASTER
+        ]
 
     },
     {
         skill: "Leadership",
         image: "./assets/Images/leadership.jpg",
+        roles: [
+            SCRUM_MASTER, PRODUCT_OWNER
+        ]
 
     },
     {
         skill: "Statistical Analysis",
         image: "./assets/Images/statistical_analysis.jpg",
+        roles: [
+            QUALITY_ASSURANCE
+        ]
 
     },
     {
         skill: "Conflict Resolution",
         image: "./assets/Images/conflict_resolution.jpg",
+        roles: [
+            PRODUCT_OWNER
+        ]
 
     },
     {
         skill: "Scheduling",
         image: "./assets/Images/scheduling.jpg",
+        roles: [
+            PROJECT_MANAGER
+        ]
 
     },
 
@@ -168,8 +228,21 @@ function getAssessmentPAge() {
 }
 
 
-likeBtn.addEventListener("click", nextSkill);
+likeBtn.addEventListener("click", function () {
+    likeBtnClick(skills[currentSkill].roles);
+    nextSkill();
 
+});
+
+function likeBtnClick(roles) {
+    console.log(roles);
+    for (var i = 0; i < roles.length; i++) {
+        console.log(roles[i]);
+        roleTotal[roles[i]] += 1;
+    }
+
+    console.log(roleTotal);
+}
 
 dislikeBtn.addEventListener("click", nextSkill);
 
@@ -177,23 +250,38 @@ function nextSkill() {
 
     currentSkill += 1;
 
-    skillDescription.textContent = skills[currentSkill].skill;
-    skillImage.src = skills[currentSkill].image;
-    assessmentPage.appendChild(skillDescription);
-    assessmentPage.appendChild(skillImage);
+    if (currentSkill >= skills.length) {
 
-    if (currentSkill == 16) {
+        indexOfLargest = 0;
+        let mostPoint = -1;
+
+        for (var i = 0; i < roleTotal.length; i++) {
+
+            if (mostPoint < roleTotal[i]) {
+                indexOfLargest = i;
+                mostPoint = roleTotal[i];
+            }
+
+        }
+
+        localStorage.setItem("index_of_role", indexOfLargest);
 
         ///show submit button
         submitBtn.style.display = "block";
-        // likeBtn.style.display = "none";
-        // dislikeBtn.style.display = "none";
+        likeBtn.style.display = "none";
+        dislikeBtn.style.display = "none";
         console.log("assessment completed");
 
+    } else {
+
+        skillDescription.textContent = skills[currentSkill].skill;
+        skillImage.src = skills[currentSkill].image;
+        assessmentPage.appendChild(skillDescription);
+        assessmentPage.appendChild(skillImage);
+
+
     }
-
-}
-
+};
 var submitBtn = document.querySelector(".js-modal-trigger");
 submitBtn.addEventListener("click", getResultPage);
 
@@ -256,19 +344,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // ----------Justin JavaScript-------------------------
 let home_btn = document.querySelector("#home")
 let assess_btn = document.querySelector("#assessment")
-let jobs_btn = document.querySelector("#jobs")
 let top_role_btn = document.querySelector("#top_role")
 let team_btn = document.querySelector("#about_us")
 let resultPage = document.querySelector(".result_page");
+var result;
 
 assess_btn.addEventListener("click", getAssessmentPAge);
 
 
-// jobs_btn.addEventListener("click", getResultPage);
+top_role_btn.addEventListener("click", getResultPage);
+
 
 // team_btn.addEventListener("click", goteam)
 
-var result;
+
 
 function getResultPage() {
 
@@ -279,24 +368,25 @@ function getResultPage() {
     result.setAttribute("class", "result_text");
     resultDescr = document.createElement("h2");
     resultDescr.setAttribute("class", "result_descr");
-    developerVideo = document.querySelector(".software_developer");
+    developerVideo = document.querySelector("#software_developer");
+    console.log(developerVideo);
     developerVideo.setAttribute("class", "videos");
-    analystVideo = document.querySelector(".business_analyst");
+    analystVideo = document.querySelector("#business_analyst");
     analystVideo.setAttribute("class", "videos");
-    scrumMasterVideo = document.querySelector(".scrum_master");
+    scrumMasterVideo = document.querySelector("#scrum_master");
     scrumMasterVideo.setAttribute("class", "videos");
-    qualityAssuranceVideo = document.querySelector(".quality_assurance");
+    qualityAssuranceVideo = document.querySelector("#quality_assurance");
     qualityAssuranceVideo.setAttribute("class", "videos");
-    productOwnerVideo = document.querySelector(".product_owner");
+    productOwnerVideo = document.querySelector("#product_owner");
     productOwnerVideo.setAttribute("class", "videos");
-    projectManagerVideo = document.querySelector(".project_manager");
+    projectManagerVideo = document.querySelector("#project_manager");
     projectManagerVideo.setAttribute("class", "videos");
 
 
 
 
 
-    if (skills[1]) {
+    if (indexOfLargest === SOFTWARE_DEVELOPER) {
         console.log("You are a Software Developer!");
 
         result.textContent = "You are a Software Developer!"
@@ -306,7 +396,7 @@ function getResultPage() {
         developerVideo.style.display = "block";
 
 
-    } if (skills[2]) {
+    } else if (indexOfLargest === BUSINESS_ANALYST) {
         console.log("You are a Business Analyst!");
 
         result.textContent = "You are a Business Analyst!"
@@ -315,7 +405,7 @@ function getResultPage() {
         resultPage.appendChild(resultDescr);
         analystVideo.style.display = "block";
 
-    } if (skills[11]) {
+    } else if (indexOfLargest === SCRUM_MASTER) {
         console.log("You are a Scrum Master!");
 
         result.textContent = "You are a Scrum Master!"
@@ -325,7 +415,7 @@ function getResultPage() {
         scrumMasterVideo.style.display = "block";
 
 
-    } if (skills[5]) {
+    } else if (indexOfLargest === QUALITY_ASSURANCE) {
         console.log("You are a Quality Assurance Tester!");
 
         result.textContent = "You are a Quality Assurance Tester!"
@@ -334,7 +424,7 @@ function getResultPage() {
         resultPage.appendChild(resultDescr);
         qualityAssuranceVideo.style.display = "block";
 
-    } if (skills[13]) {
+    } else if (indexOfLargest === PRODUCT_OWNER) {
         console.log("You are a Product Owner!");
 
         result.textContent = "You are a Product Owner!"
@@ -343,7 +433,7 @@ function getResultPage() {
         resultPage.appendChild(resultDescr);
         productOwnerVideo.style.display = "block";
 
-    } if (skills[12]) {
+    } else if (indexOfLargest === PROJECT_MANAGER) {
         console.log("You are a Project Manager!")
 
         result.textContent = "You are a Project Manager!"
@@ -353,34 +443,43 @@ function getResultPage() {
         projectManagerVideo.style.display = "block";
 
     } else {
-        console.log("You are a Business Analyst!");
+        result.textContent = "You are a Business Analyst!"
+        resultDescr.textContent = "Watch this video to learn more about this role and what is expected if you're looking to get started in this career path."
+        resultPage.appendChild(result);
+        resultPage.appendChild(resultDescr);
+        analystVideo.style.display = "block";
     }
 };
 
 
 // // ------This is my  second API--------
 
-const url = "https://remove-cors.vercel.app/https://findwork.dev/api/jobs/"
-const options = {
-    method: 'GET',
-    headers: {
-        cookie: 'csrftoken=tTySm9dqENWdWkOD3pHMrHH8p6DQ3h8E1i4dux62lxavkC4mGh3mfefihNhiwFg3',
-        Authorization: 'Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa'
-    }
-};
-// function getJobs() {
-fetch(url, options)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
-    .catch(function (error) {
-
-        console.log(error);
-    });
-
+// const url = "https://remove-cors.vercel.app/https://findwork.dev/api/jobs/"
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         cookie: 'csrftoken=tTySm9dqENWdWkOD3pHMrHH8p6DQ3h8E1i4dux62lxavkC4mGh3mfefihNhiwFg3',
+//         Authorization: 'Token 46d28295faa5e870b262de405cf67a9ebbc5aaaa'
+//     }
 // };
+// // function getJobs() {
+// fetch(url, options)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     })
+//     .catch(function (error) {
 
-// // 46d28295faa5e870b262de405cf67a9ebbc5aaaa
+//         console.log(error);
+//     });
+
+// // };
+
+// // // 46d28295faa5e870b262de405cf67a9ebbc5aaaa
+
+
+
+
+
