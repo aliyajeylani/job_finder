@@ -227,3 +227,23 @@ body {
     margin: 20px;
 
 }
+
+/* -----------CSS for 12Data API--------- */
+
+.stock {
+
+    border: solid black 5px;
+    margin: 10px;
+    background-color: #E5DCDF;
+    text-align: center;
+    padding: 20px;
+    width: 400px;
+}
+
+.container3 {
+    display: flex;
+}
+
+.container3 h1 {
+    font-weight: bold;
+}
